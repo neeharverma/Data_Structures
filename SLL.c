@@ -29,11 +29,13 @@ struct node* insert(struct node* list,int data){
     return new;
 }
 
-void delete(struct node *begin, int loc){
+struct node* delete(struct node *begin, int loc){
     int i = 2;
+    struct node* head = begin;
     struct node* parser = begin;
     while (1) {
         if(loc == 1){
+            return parser->to;
             free(parser);
             break;
         }
@@ -41,10 +43,12 @@ void delete(struct node *begin, int loc){
         if(i == loc){
             begin->to = parser->to;
             free(parser);
+            return head;
             break;
         }
         if(parser->to == NULL){
             printf("Invalid index\n");
+            return head;
             break;
         }
         begin = begin->to; 
@@ -102,7 +106,7 @@ int main() {
         if(menu == 2){
             printf("Enter item index to be deleted: ");
             scanf("%d", &d);
-            delete(SLL, d);            
+            SLL = delete(SLL, d);            
         }
         if(menu == 3){
             printf("Enter item index to be modified: ");
