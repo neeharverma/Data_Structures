@@ -8,7 +8,7 @@ char* reverse(char x[], int i){ //takes the string and index as arguments
     x[i] = x[length - i - 1];  
     x[length - i - 1] = temp;       //swaps 
     if(i<length/2-1) //stops recursion once terminating character is encountered
-        summate(x,++i); //calls function with the next index
+        reverse(x,++i); //calls function with the next index
     return x;
 }
 int main()
